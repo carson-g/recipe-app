@@ -10,25 +10,46 @@ const SearchModule = () => {
     // api call method, returns data
     const recipeSearchCall = async (input, searchType) => {
         const API_KEY = "6ade239ddd23484382438ee5d85822b3";
-        let API_URL = "https://api.spoonacular.com/recipes/complexSearch?query=";
+        const API_URL = "https://api.spoonacular.com/recipes/";
         if (input === '') {
             alert("Search input required!");
             return null;
         } else {
             let output;
+            let urlCall1;
             if (searchType === "byName") {
-                API_URL = `${API_URL}${input}&addRecipeNutrition=true&apiKey=${API_KEY}`;
+                urlCall1 = `${API_URL}complexSearch?query=${input}&addRecipeNutrition=true&apiKey=${API_KEY}`;
             } else {
-                API_URL = `${API_URL}${input}&includeIngredients=${input}&addRecipeNutrition=true&apiKey=${API_KEY}`;
                 input.replace(' ', ',');
+                urlCall1 = `${API_URL}findByIngredients?ingredients=${input}&ranking=1&apiKey=${API_KEY}`;
             }
             try {
-                await fetch(API_URL)
+                await fetch(urlCall1)
                     .then(response => response.json())
                     .then(data => {
                         console.log(data)
                         output = data;});
-                return output;
+                if (searchType === "byName") {
+                    return output;
+                } else {
+                    let idList = [];
+                    let counter = 0;
+                    output.forEach(element => {
+                        let id = element.id;
+                        idList[counter] = id;
+                        counter++;
+                    });
+                    let output2;
+                    let idString = idList.toString();
+                    console.log(idString);
+                    let urlCall2 = `${API_URL}informationBulk?ids=${idString}&includeNutrition=true&apiKey=${API_KEY}`;
+                    await fetch(urlCall2)
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data)
+                            output2 = data;});
+                    return output2;
+                }
             } catch (error) {
                 console.log(error);
                 return null;
@@ -39,10 +60,10 @@ const SearchModule = () => {
     const cardUpdate = (data, searchType) => {
         // store data for recipes in recipeList state
         try {
-            // if (searchType === "byName") {
-            //     data = data.results;
-            // }
-            setState({recipeList: data.results});
+            if (searchType === "byName") {
+                data = data.results;
+            }
+            setState({recipeList: data});
         } catch (error) {
             console.log(error);
         }
