@@ -21,11 +21,12 @@ const Card = (props) => {
         )
     } else {
         return (
-            <div>
-                <h2>{props.info.title}</h2>
+            <div class="card">
                 <img src={props.info.image} alt=""></img>
-                <br></br>
-                <button onClick={handleClick}>{state.moreInfo ? "Hide Info" : "Show Info"}</button>
+                <div class="card-basic-info">
+                    <h3>{props.info.title}</h3>
+                    <button onClick={handleClick}>{state.moreInfo ? "Hide Info" : "Show Info"}</button>
+                </div>
                 {state.moreInfo ? 
                     <ul>
                         <li>Servings: {props.info.servings}</li>

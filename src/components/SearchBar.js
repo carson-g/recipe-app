@@ -12,7 +12,7 @@ const SearchBar = (props) => {
         props.cardUpdate(data, searchType);
     }
     return (
-        <div>
+        <div class="search-bar">
             <form onSubmit={handleSubmit}>
                 <input type='text' name='input'/>
                 <input type='submit' value='Search'/>

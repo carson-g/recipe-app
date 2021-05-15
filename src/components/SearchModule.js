@@ -18,10 +18,10 @@ const SearchModule = () => {
             let output;
             let urlCall1;
             if (searchType === "byName") {
-                urlCall1 = `${API_URL}complexSearch?query=${input}&addRecipeNutrition=true&apiKey=${API_KEY}`;
+                urlCall1 = `${API_URL}complexSearch?query=${input}&number=12&addRecipeNutrition=true&apiKey=${API_KEY}`;
             } else {
                 input.replace(' ', ',');
-                urlCall1 = `${API_URL}findByIngredients?ingredients=${input}&ranking=1&apiKey=${API_KEY}`;
+                urlCall1 = `${API_URL}findByIngredients?ingredients=${input}&number=12&ranking=1&apiKey=${API_KEY}`;
             }
             try {
                 await fetch(urlCall1)
@@ -72,9 +72,11 @@ const SearchModule = () => {
     return (
         <div>
             <SearchBar recipeSearchCall={recipeSearchCall} cardUpdate={cardUpdate} />
-            {state.recipeList.map((info, index) => (
-                <Card key={index} info={info}></Card>
-            ))}
+            <div class="card-list">
+                {state.recipeList.map((info, index) => (
+                    <Card key={index} info={info}></Card>
+                ))}
+            </div>
         </div>
     )
 }

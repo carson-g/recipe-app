@@ -1,71 +1,110 @@
+:root {
+    /* variables */
+    --color-main: #282c34;
+    --color-accent: #50a056;
+    --color-outline: #ffffff;
+}
+
 body {
-    background-color: #282c34;
+    /* background image */
+    background-image: linear-gradient(black, black), url(https://wallpapercave.com/wp/wp1874155.jpg);
+    image-rendering: optimizeSpeed;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-blend-mode: saturation;
+    /* text */
     color: white;
-    padding: 40px;
     font-family: Arial;
     text-align: center;
 }
 
-img {
-    outline: 2px solid white;
-}
-
 button {
-    border: 1px solid white;
+    border: 1px solid var(--color-outline);
     padding: 6px 16px;
     color: white;
-    background-color: #282c34;
+    background-color: var(--color-main);
     border-radius: 8px;
     transition-duration: .75s;
 }
 
 button:hover {
-    background-color: darkslateblue;
-    color: white;
+    background-color: var(--color-accent);
 }
 
 input[type=text] {
-    width: 75%;
+    width: 80%;
     padding: 12px 20px;
     box-sizing: border-box;
-    border: 1px solid white;
+    border: 1px solid var(--color-outline);
     border-radius: 8px;
-    background-color: #282c34;
+    background-color: var(--color-main);
     color: white;
     transition-duration: .75s;
 }
 
 input[type=text]:hover {
-    background-color: darkslateblue;
+    background-color: var(--color-accent);
 }
 
 input[type=text]:focus {
-    background-color: darkslateblue;
+    background-color: var(--color-accent);
 }
 
 input[type=submit] {
-    width: 25%;
+    width: 20%;
     padding: 12px 6px;
-    border: 1px solid white;
+    border: 1px solid var(--color-outline);
     border-radius: 8px;
-    background-color: #282c34;
+    background-color: var(--color-main);
     color: white;
     transition-duration: .75s;
 }
 
 input[type=submit]:hover {
-    background-color: darkslateblue;
+    background-color: var(--color-accent);
 }
 
-h1 {
-    color: rgb(137, 125, 209);
+.search-bar {
+    margin: 1em;
+    background-color: var(--color-main);
+    border-radius:1em;
+    border: 1px solid var(--color-outline);
+    padding: 1em;
 }
 
-h2 {
-    color: white;
+.card {
+    background-color:var(--color-main);
+    border-radius:1em;
+    border: 1px solid var(--color-outline);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1em;
+    margin: 1em;
 }
 
-li {
-    color: white;
-    text-align: left;
+img {
+    border-radius: 4%;
+    object-fit:none;
+    width: 10em;
+    height: 100%;
+}
+
+.card-basic-info {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 100%;
+    margin: 10px;
+}
+
+.card-list {
+    margin: 1em;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-list > * {
+    flex: 1 1 25%;
 }
