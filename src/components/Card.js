@@ -28,13 +28,14 @@ const Card = (props) => {
                     <button onClick={handleClick}>{state.moreInfo ? "Hide Info" : "Show Info"}</button>
                 </div>
                 {state.moreInfo ? 
-                    <ul>
-                        <li>Servings: {props.info.servings}</li>
-                        <li>Ready Time: {props.info.readyInMinutes} minutes</li>
-                        {props.info.glutenFree ? <li>Gluten Free: Yes</li> : <li>Gluten Free: No</li>}
-                        <li>Calories: {props.info.nutrition.nutrients[0].amount}</li>
-                        <li>Summary: {props.info.summary.split(".")[0].replace("<b>","").replace("</b>","")}.</li>
-                    </ul>
+                    // <ul>
+                    //     <li>Servings: {props.info.servings}</li>
+                    //     <li>Ready Time: {props.info.readyInMinutes} minutes</li>
+                    //     {props.info.glutenFree ? <li>Gluten Free: Yes</li> : <li>Gluten Free: No</li>}
+                    //     <li>Calories: {props.info.nutrition.nutrients[0].amount}</li>
+                    //     <li>Summary: {props.info.summary.split(".")[0].replace("<b>","").replace("</b>","")}.</li>
+                    // </ul>
+                    <br></br>
                 :   <br></br>}
             </div>
         )
