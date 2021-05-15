@@ -86,6 +86,11 @@ input[type=submit] {
     background-image: url(https://integrityhr.com/wp-content/uploads/2015/11/IHR_search_icon-200x200.png);
     background-size: 100%;
     background-blend-mode: darken;
+    transition-duration: var(--transition-time);
+}
+
+.mag-glass:hover {
+    transform: scale(1.2);
 }
 
 .radio {
@@ -154,6 +159,7 @@ button:hover {
     padding: 1em;
     margin: 1em;
     transition-duration: var(--transition-time);
+    animation: fadeIn 1s;
 }
 
 .card:hover {
@@ -183,4 +189,25 @@ img {
 
 .card-list > * {
     flex: 1 1 25%;
+}
+
+/* EXPANDED CARD */
+
+.expanded {
+    background-color:var(--color-dark);
+    border-radius:1em;
+    border: 1px solid var(--color-outline);
+    padding: 1em;
+    margin: 1em;
+    animation: fadeIn 1s;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
 }
