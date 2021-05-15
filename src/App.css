@@ -1,8 +1,9 @@
 :root {
     /* variables */
     --color-main: #282c34;
-    --color-accent: #50a056;
-    --color-outline: #ffffff;
+    --color-dark: #25262a;
+    --color-accent: #6dbb73;
+    --color-outline: #738a6a;
     --transition-time: .5s;
 }
 
@@ -16,10 +17,12 @@ body {
 /* TITLE AND HEADER */
 
 .header {
-    background-color: var(--color-accent);
+    background-color: var(--color-dark);
     padding: 0.5em;
     margin-top: 2em;
     text-align: center;
+    border-top: 1em solid var(--color-accent);
+    border-bottom: 1em solid var(--color-accent);
 }
 
 /* SEARCH FORM */
@@ -41,6 +44,7 @@ body {
     width: 100%;
     border: 2px solid var(--color-outline);
     border-radius: 15px;
+    background-color: var(--color-main);
     transition-duration: var(--transition-time);
 }
 
@@ -125,3 +129,58 @@ input[type=submit] {
 }
 
 /* CARDS */
+
+button {
+    border: 1px solid var(--color-outline);
+    padding: 6px 16px;
+    color: white;
+    background-color: var(--color-main);
+    border-radius: 8px;
+    transition-duration: .75s;
+}
+
+button:hover {
+    background-color: var(--color-accent);
+    cursor: pointer;
+}
+
+.card {
+    background-color:var(--color-dark);
+    border-radius:1em;
+    border: 1px solid var(--color-outline);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1em;
+    margin: 1em;
+    transition-duration: var(--transition-time);
+}
+
+.card:hover {
+    transform: scale(1.025);
+}
+
+img {
+    border-radius: 4%;
+    object-fit:none;
+    width: 10em;
+    height: 100%;
+}
+
+.card-basic-info {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 100%;
+    margin: 10px;
+}
+
+.card-list {
+    margin: 1em;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-list > * {
+    flex: 1 1 25%;
+}

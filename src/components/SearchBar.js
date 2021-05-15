@@ -13,7 +13,7 @@ const SearchBar = (props) => {
     }
     return (
         <div class="search-form">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} autoComplete="off">
                 <label class="search-bar">
                     <input type='text' name='input' placeholder="Search..."/>
                     <label class="mag-glass">
