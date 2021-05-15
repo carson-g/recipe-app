@@ -3,108 +3,113 @@
     --color-main: #282c34;
     --color-accent: #50a056;
     --color-outline: #ffffff;
+    --transition-time: .5s;
 }
 
 body {
-    /* background image */
-    background-image: linear-gradient(black, black), url(https://wallpapercave.com/wp/wp1874155.jpg);
-    image-rendering: optimizeSpeed;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
-    background-blend-mode: saturation;
+    background-color: var(--color-main);
     /* text */
     color: white;
     font-family: Arial;
+    /* text-align: center; */
+}
+
+.search-form {
+    margin: 1em;
+    padding: 2em;
     text-align: center;
+    display: flex;
 }
 
-button {
-    border: 1px solid var(--color-outline);
-    padding: 6px 16px;
-    color: white;
-    background-color: var(--color-main);
-    border-radius: 8px;
-    transition-duration: .75s;
+.search-form > * {
+    flex-basis: 100%;
 }
 
-button:hover {
+.search-bar {
+    padding: 1em;
+    margin: 1em;
+    width: 100%;
+    border: 2px solid var(--color-outline);
+    border-radius: 15px;
+    transition-duration: var(--transition-time);
+}
+
+.search-bar:hover {
+    background-color: var(--color-accent);
+}
+
+.search-bar:focus-within {
     background-color: var(--color-accent);
 }
 
 input[type=text] {
-    width: 80%;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: 1px solid var(--color-outline);
-    border-radius: 8px;
-    background-color: var(--color-main);
+    width: 30%;
+    padding: 2em;
+    background-color: transparent;
+    border: none;
     color: white;
-    transition-duration: .75s;
+    vertical-align: middle;
+    transition-duration: var(--transition-time);
 }
 
-input[type=text]:hover {
-    background-color: var(--color-accent);
+input[type="text"]::placeholder {
+    color: white;
 }
 
 input[type=text]:focus {
-    background-color: var(--color-accent);
+    outline: none;
 }
 
 input[type=submit] {
-    width: 20%;
-    padding: 12px 6px;
-    border: 1px solid var(--color-outline);
-    border-radius: 8px;
-    background-color: var(--color-main);
-    color: white;
-    transition-duration: .75s;
+    display: none;
 }
 
-input[type=submit]:hover {
-    background-color: var(--color-accent);
-}
-
-.search-bar {
-    margin: 1em;
-    background-color: var(--color-main);
-    border-radius:1em;
-    border: 1px solid var(--color-outline);
+.mag-glass {
     padding: 1em;
+    display: inline-flex;
+    cursor: pointer;
+    vertical-align: middle;
+    background-image: url(https://integrityhr.com/wp-content/uploads/2015/11/IHR_search_icon-200x200.png);
+    background-size: 100%;
+    background-blend-mode: darken;
 }
 
-.card {
-    background-color:var(--color-main);
-    border-radius:1em;
-    border: 1px solid var(--color-outline);
-    display: flex;
-    justify-content: center;
+.radio {
+    display: inline-flex;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.radio + .radio {
+    padding-left: 1em;
+}
+
+.radio--input {
+    display: none;
+}
+
+.radio--radio {
+    width: 1.25em;
+    height: 1.25em;
+    border: 2px solid var(--color-outline);
+    border-radius: 50%;
+    margin: 1px;
+    box-sizing: border-box;
+    padding: 2px;
+}
+
+.radio--radio::after {
+    content: "";
     width: 100%;
-    padding: 1em;
-    margin: 1em;
-}
-
-img {
-    border-radius: 4%;
-    object-fit:none;
-    width: 10em;
     height: 100%;
+    display: block;
+    background: var(--color-accent);
+    border-radius: 50%;
+    text-align: center;
+    opacity: 0;
+    transition-duration: var(--transition-time);
 }
 
-.card-basic-info {
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    width: 100%;
-    margin: 10px;
-}
-
-.card-list {
-    margin: 1em;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.card-list > * {
-    flex: 1 1 25%;
+.radio--input:checked + .radio--radio::after {
+    opacity: 1;
 }
