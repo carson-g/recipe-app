@@ -1,11 +1,14 @@
 import React from 'react'
 import Card from './Card'
+import ExpandedCard from './ExpandedCard'
 import SearchBar from './SearchBar'
 
 const SearchModule = () => {
     // allow setState functionality
     const [state, setState] = React.useState({
-        recipeList: [{title: null, img: null}]
+        recipeList: [{title: null, img: null}],
+        expandCard: false,
+        cardIndex: 0
     })
     // api call method, returns data
     const recipeSearchCall = async (input, searchType) => {
@@ -68,15 +71,30 @@ const SearchModule = () => {
             console.log(error);
         }
     }
+    // opens and closes expanded card
+    const openCard = (cardIndex) => {
+        if (state.expandCard) {
+            setState({recipeList: state.recipeList,
+                expandCard: false})
+        } else {
+            setState({recipeList: state.recipeList,
+                expandCard: true,
+                cardIndex: cardIndex})
+        }
+    }
     // implement component
     return (
         <div>
             <SearchBar recipeSearchCall={recipeSearchCall} cardUpdate={cardUpdate} />
+            {state.expandCard ?
+            <ExpandedCard info={state.recipeList[state.cardIndex]} openCard={openCard}/>
+            :
             <div class="card-list">
                 {state.recipeList.map((info, index) => (
-                    <Card key={index} info={info}></Card>
+                    <Card key={index} index={index} info={info} openCard={openCard}></Card>
                 ))}
             </div>
+            }
         </div>
     )
 }
