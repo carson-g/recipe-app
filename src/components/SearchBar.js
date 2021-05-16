@@ -12,13 +12,25 @@ const SearchBar = (props) => {
         props.cardUpdate(data, searchType);
     }
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input type='text' name='input'/>
-                <input type='submit' value='Search'/>
-                <br></br>
-                <input type="radio" name="searchType" value="byName" defaultChecked="true"/>Search by Name
-                <input type="radio" name="searchType" value="byIngredients"/>Search by Ingredients
+        <div class="search-form">
+            <form onSubmit={handleSubmit} autoComplete="off">
+                <label class="search-bar">
+                    <input type='text' name='input' placeholder="Search..."/>
+                    <label class="mag-glass">
+                        <input type='submit' value='Search'/>
+                        {/* <img width="30" height="30" src="https://integrityhr.com/wp-content/uploads/2015/11/IHR_search_icon-200x200.png" alt=""></img> */}
+                    </label>
+                </label>
+                <label class="radio">
+                    <input class="radio--input" type="radio" name="searchType" value="byName" defaultChecked="true"></input>
+                    <div class="radio--radio"></div>
+                    Search by Name
+                </label>
+                <label class="radio">
+                    <input class="radio--input" type="radio" name="searchType" value="byIngredients"></input>
+                    <div class="radio--radio"></div>
+                    Search by Ingredient List
+                </label>
             </form>
         </div>
     )

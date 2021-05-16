@@ -1,71 +1,283 @@
-body {
-    background-color: #282c34;
-    color: white;
-    padding: 40px;
-    font-family: Arial;
-    text-align: center;
+:root {
+    /* variables */
+    --color-main: #282c34;
+    --color-dark: #25262a;
+    --color-accent: #6dbb73;
+    --color-outline: #738a6a;
+    --transition-time: .5s;
 }
 
-img {
-    outline: 2px solid white;
+body {
+    background-color: var(--color-main);
+    /* text */
+    color: white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
+
+/* TITLE AND HEADER */
+
+.header {
+    background-color: var(--color-dark);
+    padding: 0.5em;
+    margin-top: 2em;
+    text-align: center;
+    border-top: 1em solid var(--color-accent);
+    border-bottom: 1em solid var(--color-accent);
+}
+
+/* SEARCH FORM */
+
+.search-form {
+    margin: 1em;
+    padding: 2em;
+    text-align: center;
+    display: flex;
+}
+
+.search-form > * {
+    flex-basis: 100%;
+}
+
+.search-bar {
+    padding: 1em;
+    margin: 1em;
+    width: 100%;
+    border: 2px solid var(--color-outline);
+    border-radius: 15px;
+    background-color: var(--color-main);
+    transition-duration: var(--transition-time);
+}
+
+.search-bar:hover {
+    background-color: var(--color-accent);
+}
+
+.search-bar:focus-within {
+    background-color: var(--color-accent);
+}
+
+input[type=text] {
+    width: 30%;
+    padding: 2em;
+    background-color: transparent;
+    border: none;
+    color: white;
+    vertical-align: middle;
+    transition-duration: var(--transition-time);
+}
+
+input[type="text"]::placeholder {
+    color: white;
+}
+
+input[type=text]:focus {
+    outline: none;
+}
+
+input[type=submit] {
+    display: none;
+}
+
+.mag-glass {
+    padding: 1em;
+    display: inline-flex;
+    cursor: pointer;
+    vertical-align: middle;
+    background-image: url(https://integrityhr.com/wp-content/uploads/2015/11/IHR_search_icon-200x200.png);
+    background-size: 100%;
+    background-blend-mode: darken;
+    transition-duration: var(--transition-time);
+}
+
+.mag-glass:hover {
+    transform: scale(1.2);
+}
+
+.radio {
+    display: inline-flex;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.radio + .radio {
+    padding-left: 1em;
+}
+
+.radio--input {
+    display: none;
+}
+
+.radio--radio {
+    width: 1.25em;
+    height: 1.25em;
+    border: 2px solid var(--color-outline);
+    border-radius: 50%;
+    margin: 1px;
+    box-sizing: border-box;
+    padding: 2px;
+}
+
+.radio--radio::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: var(--color-accent);
+    border-radius: 50%;
+    text-align: center;
+    opacity: 0;
+    transition-duration: var(--transition-time);
+}
+
+.radio--input:checked + .radio--radio::after {
+    opacity: 1;
+}
+
+/* CARDS */
 
 button {
-    border: 1px solid white;
+    border: 1px solid var(--color-outline);
     padding: 6px 16px;
     color: white;
-    background-color: #282c34;
+    background-color: var(--color-main);
     border-radius: 8px;
     transition-duration: .75s;
 }
 
 button:hover {
-    background-color: darkslateblue;
-    color: white;
+    background-color: var(--color-accent);
+    cursor: pointer;
 }
 
-input[type=text] {
-    width: 75%;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: 1px solid white;
-    border-radius: 8px;
-    background-color: #282c34;
-    color: white;
-    transition-duration: .75s;
+.card {
+    background-color:var(--color-dark);
+    border-radius:1em;
+    border: 1px solid var(--color-outline);
+    display: flex;
+    justify-content: center;
+    max-width: 1000px;
+    padding: 1em;
+    margin: 1em;
+    transition-duration: var(--transition-time);
+    animation: fadeIn 1s;
 }
 
-input[type=text]:hover {
-    background-color: darkslateblue;
+.card:hover {
+    transform: scale(1.025);
 }
 
-input[type=text]:focus {
-    background-color: darkslateblue;
+.card-img {
+    border-radius: 4%;
+    object-fit: contain;
+    max-width: 200px;
+    max-height: 200px;
+    display: block;
+    margin: auto;
 }
 
-input[type=submit] {
-    width: 25%;
-    padding: 12px 6px;
-    border: 1px solid white;
-    border-radius: 8px;
-    background-color: #282c34;
-    color: white;
-    transition-duration: .75s;
+@media only screen and (max-width: 500px) {
+    .card-img {
+        border-radius: 4%;
+        object-fit: contain;
+        max-width: 100px;
+        max-height: 100px;
+        display: block;
+        margin: auto;
+    }
 }
 
-input[type=submit]:hover {
-    background-color: darkslateblue;
+.card-basic-info {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 100%;
+    margin: 10px;
 }
 
-h1 {
-    color: rgb(137, 125, 209);
+.card-list {
+    margin: 1em;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-h2 {
-    color: white;
+.card-list > * {
+    flex: 25%;
 }
 
-li {
-    color: white;
-    text-align: left;
+/* EXPANDED CARD */
+
+.expanded {
+    background-color:var(--color-dark);
+    border-radius:1em;
+    border: 1px solid var(--color-outline);
+    padding: 2em;
+    margin: 1em;
+    animation: fadeIn 1s;
+}
+
+.card-stats {
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.card-stats > * {
+    flex-basis: 50%;
+    align-self: center;
+    margin: 1em;
+}
+
+.quick-stats {
+    display: flex;
+    text-align: center;
+}
+
+.quick-stats > * {
+    flex-basis: 100%;
+    margin: 1em;
+}
+
+.exp-img {
+    border-radius: 4%;
+    object-fit: contain;
+    max-width: 400px;
+    max-height: 400px;
+    display: block;
+    margin: auto;
+}
+
+.v1 {
+    border-right: 2px solid var(--color-accent);
+    max-width: 0px;
+    height: 1;
+    text-align: center;
+}
+
+@media only screen and (max-width: 500px) {
+    .exp-img {
+        border-radius: 4%;
+        object-fit: contain;
+        max-width: 200px;
+        max-height: 200px;
+        display: block;
+        margin: auto;
+    }
+
+    .card-stats {
+        display: table;
+    }
+
+    .quick-stats {
+        display: table;
+    }
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
 }
