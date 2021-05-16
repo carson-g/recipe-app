@@ -2,6 +2,8 @@
 
 This is a simple web application designed to allow users to search for and find information on thousands of recipes.
 
+You can view and test out this web app <a href="https://carson-g-recipe-app.netlify.app/">here</a>.
+
 ## Features
 
 * Search for a recipe by name OR by list of ingredients
