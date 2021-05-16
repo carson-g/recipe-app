@@ -14,7 +14,7 @@ const Card = (props) => {
     } else {
         return (
             <div class="card">
-                <img src={props.info.image} alt=""></img>
+                <img class="card-img" src={props.info.image} alt=""></img>
                 <div class="card-basic-info">
                     <h3>{props.info.title}</h3>
                     <button onClick={handleClick}>Show Info</button>

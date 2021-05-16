@@ -86,6 +86,11 @@ input[type=submit] {
     background-image: url(https://integrityhr.com/wp-content/uploads/2015/11/IHR_search_icon-200x200.png);
     background-size: 100%;
     background-blend-mode: darken;
+    transition-duration: var(--transition-time);
+}
+
+.mag-glass:hover {
+    transform: scale(1.2);
 }
 
 .radio {
@@ -150,21 +155,35 @@ button:hover {
     border: 1px solid var(--color-outline);
     display: flex;
     justify-content: center;
-    width: 100%;
+    max-width: 1000px;
     padding: 1em;
     margin: 1em;
     transition-duration: var(--transition-time);
+    animation: fadeIn 1s;
 }
 
 .card:hover {
     transform: scale(1.025);
 }
 
-img {
+.card-img {
     border-radius: 4%;
-    object-fit:none;
-    width: 10em;
-    height: 100%;
+    object-fit: contain;
+    max-width: 200px;
+    max-height: 200px;
+    display: block;
+    margin: auto;
+}
+
+@media only screen and (max-width: 500px) {
+    .card-img {
+        border-radius: 4%;
+        object-fit: contain;
+        max-width: 100px;
+        max-height: 100px;
+        display: block;
+        margin: auto;
+    }
 }
 
 .card-basic-info {
@@ -182,5 +201,83 @@ img {
 }
 
 .card-list > * {
-    flex: 1 1 25%;
+    flex: 25%;
+}
+
+/* EXPANDED CARD */
+
+.expanded {
+    background-color:var(--color-dark);
+    border-radius:1em;
+    border: 1px solid var(--color-outline);
+    padding: 2em;
+    margin: 1em;
+    animation: fadeIn 1s;
+}
+
+.card-stats {
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.card-stats > * {
+    flex-basis: 50%;
+    align-self: center;
+    margin: 1em;
+}
+
+.quick-stats {
+    display: flex;
+    text-align: center;
+}
+
+.quick-stats > * {
+    flex-basis: 100%;
+    margin: 1em;
+}
+
+.exp-img {
+    border-radius: 4%;
+    object-fit: contain;
+    max-width: 400px;
+    max-height: 400px;
+    display: block;
+    margin: auto;
+}
+
+.v1 {
+    border-right: 2px solid var(--color-accent);
+    max-width: 0px;
+    height: 1;
+    text-align: center;
+}
+
+@media only screen and (max-width: 500px) {
+    .exp-img {
+        border-radius: 4%;
+        object-fit: contain;
+        max-width: 200px;
+        max-height: 200px;
+        display: block;
+        margin: auto;
+    }
+
+    .card-stats {
+        display: table;
+    }
+
+    .quick-stats {
+        display: table;
+    }
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
 }
