@@ -57,7 +57,7 @@ body {
 }
 
 input[type=text] {
-    width: 30%;
+    width: 20%;
     padding: 2em;
     background-color: transparent;
     border: none;
