@@ -30,7 +30,6 @@ const SearchModule = () => {
                 await fetch(urlCall1)
                     .then(response => response.json())
                     .then(data => {
-                        console.log(data)
                         output = data;});
                 if (searchType === "byName") {
                     return output;
@@ -49,7 +48,6 @@ const SearchModule = () => {
                     await fetch(urlCall2)
                         .then(response => response.json())
                         .then(data => {
-                            console.log(data)
                             output2 = data;});
                     return output2;
                 }

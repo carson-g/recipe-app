@@ -29,7 +29,7 @@ const SearchBar = (props) => {
                 <label class="radio">
                     <input class="radio--input" type="radio" name="searchType" value="byIngredients"></input>
                     <div class="radio--radio"></div>
-                    Search by Ingredients
+                    Search by Ingredient List
                 </label>
             </form>
         </div>
